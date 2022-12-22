@@ -1,8 +1,16 @@
 const sketchpad = document.querySelector('.sketchpad');
+const clearButton = document.querySelector('.clear');
 
-freshGrid(100);
+let dimension = 100;
 
-function freshGrid (dimension) {
+freshGrid();
+
+clearButton.addEventListener('click', freshGrid);
+
+function freshGrid () {
+  let squares = sketchpad.querySelectorAll('.square');
+  squares.forEach(s => s.remove());
+
   sketchpad.style.gridTemplateColumns = `repeat(${dimension}, 1fr)`;
   sketchpad.style.gridTemplateRows = `repeat(${dimension}, 1fr)`;
 
